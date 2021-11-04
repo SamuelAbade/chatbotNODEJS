@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Teste</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="all">
+          <div id="prompt">
+            <form class="form" action="/" method="POST">
+              <input type="text" name="input" size="30" />
+              <button type="submit">Enviar</button>
+            </form>
+          </div>
+          <div class="chat">
+            <textarea disabled class="scroll">
+                <% conversacion.forEach(function(element) { %>
+                  <%= element %>
+                <% }); %>
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

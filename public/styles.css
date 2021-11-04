@@ -1,0 +1,76 @@
+.scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  body {
+    background-color: black;
+    color: cornsilk;
+  }
+  
+  .container {
+    width: 750px;
+    margin: 0 auto;
+  }
+  
+  .row {
+    width: 100vw;
+    position: relative;
+    margin-left: -50vw;
+    height: 100px;
+    margin-top: 100px;
+    left: 50%;
+  }
+  
+  .all {
+    position: relative;
+    text-align: left;
+    border: 5px solid grey;
+    border-radius: 25px;
+    display: inline-block;
+  }
+  
+  #prompt {
+    margin: 7px;
+  }
+  .chat {
+    margin: 7px;
+  }
+  
+  input[type='text'] {
+    -webkit-border-radis: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 1px solid white;
+    color: black;
+    width: 255px;
+    height: 30px;
+    padding-left: 10px;
+  }
+  
+  button {
+    -webkit-border-radis: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 1px solid grey;
+    color: black;
+    width: 70px;
+    height: 30px;
+    padding-left: 10px;
+  }
+  
+  textarea {
+    -webkit-border-radis: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 1px solid grey;
+    width: 330px;
+    height: 500px;
+    color: white;
+    text-align: right;
+    resize: none;
+  }
+  
+  .text {
+    margin: 10px;
+  }
+  
