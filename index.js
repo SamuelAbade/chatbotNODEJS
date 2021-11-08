@@ -8,6 +8,25 @@ const path = require('path');
 //Variable para almacenar conersaciones anteriores
 const conv = [];
 
+//Ver si es la primera vez:
+var primeraVez = false;
+
+// almacenar nombre del usuario
+var nombreuser = '';
+
+//Enviar mensaje de bienvenida + Reiniciar el bot si la pagina es recargada
+app.get('/', function (req, res) {
+  primeraVez = true;
+  conv.length = 0;
+
+  const msg = 'Bot: Bienvenido al bot! Cuál es tu nombre?';
+  conv.push(msg);
+
+  res.render(__dirname + '/public/index.html', {
+    conversacion: conv,
+  });
+});
+
 //Coger index.html
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyparser.urlencoded({ extended: false }));
@@ -17,6 +36,10 @@ app.set('view engine', 'html');
 
 //Chatbot por si solo
 function chatbot(mensaje) {
+  if (primeraVez) {
+    nombreuser = mensaje;
+  }
+
   mensaje = mensaje.toUpperCase();
 
   switch (mensaje) {
@@ -27,7 +50,11 @@ function chatbot(mensaje) {
       return 'Este test está diseñado como prueba para el bot4testing. Esta conversación se ha acabado! muchas gracias!';
       break;
     default:
-      return 'No te entiendo! diga hola para empezar.';
+      if (primeraVez) {
+        return 'Es un placer conocerte, ' + nombreuser;
+      } else {
+        return 'No te entiendo! diga hola para empezar.';
+      }
       break;
   }
 }
@@ -45,12 +72,8 @@ app.post('/', (req, res) => {
   res.render(__dirname + '/public/index.html', {
     conversacion: conv,
   });
-});
 
-app.get('/', function (req, res) {
-  res.render(__dirname + '/public/index.html', {
-    conversacion: conv,
-  });
+  primeraVez = false;
 });
 
 app.listen(8000, () => {
